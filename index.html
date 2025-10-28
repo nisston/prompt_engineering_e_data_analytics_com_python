@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Bootcamp de IA e Análise de Dados</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <!-- 
+    Palette Chosen: Energetic & Playful
+    #5F27CD (Roxo)
+    #FF9F43 (Laranja)
+    #FFC107 (Amarelo)
+    #00D2D3 (Ciano)
+    #4B4B4B (Texto)
+    #F5F5F5 (Fundo)
+    
+    Narrative Plan:
+    1. Hook: Title and Subtitle.
+    2. KPIs: The bootcamp by the numbers (Days, Hours, Activities).
+    3. Core Concept: Visualize the central synergy (Data -> Python -> IA -> Insight).
+    4. Day 1 Deep Dive: Focus on Fundamentals (PE Pillars, Pandas).
+    5. Day 2 Deep Dive: Focus on Synergy (Workflows).
+    6. Chart Breakdown: Show time allocation per topic.
+    7. Key Tools & Takeaways: List tools and final warnings.
+    
+    Visualization Selection:
+    - KPIs (Inform): 3x "Single Big Number" (HTML/CSS).
+    - Core Synergy (Organize): Flow Diagram (HTML/CSS). NO SVG/Mermaid.
+    - Day 1 vs Day 2 Focus (Compare): Donut Chart (Chart.js/Canvas).
+    - Module Time Allocation (Compare): Bar Chart (Chart.js/Canvas).
+    - Pre/Post-processing Flows (Organize): 2x Flow Diagrams (HTML/CSS). NO SVG/Mermaid.
+    - Tools & Warnings (Organize): Styled Lists (HTML/CSS).
+    
+    Confirmation: NO SVG graphics were used. NO Mermaid JS was used. All charts are rendered to Canvas via Chart.js or are pure HTML/CSS diagrams.
+    -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F5F5;
+            color: #4B4B4B;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flow-diagram {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .flow-item {
+            background-color: #FFFFFF;
+            border: 2px solid #5F27CD;
+            color: #5F27CD;
+            padding: 0.75rem 1.25rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            flex-grow: 1;
+            min-width: 120px;
+        }
+        .flow-arrow {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #FF9F43;
+            flex-grow: 0;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+        }
+        .flow-arrow::after {
+            content: '→';
+        }
+        @media (max-width: 768px) {
+            .flow-arrow {
+                transform: rotate(90deg);
+                margin: 0.25rem 0;
+            }
+            .flow-diagram {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5F27CD',
+                        secondary: '#FF9F43',
+                        accent: '#FFC107',
+                        info: '#00D2D3',
+                        dark: '#4B4B4B',
+                        light: '#F5F5F5',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+
+        <header class="text-center mb-12 md:mb-16">
+            <h1 class="text-4xl md:text-6xl font-black text-primary mb-4">Bootcamp: Prompt Engineering & Data Analytics</h1>
+            <p class="text-xl md:text-2xl font-bold text-dark">Potenciando Insights com IA e Python</p>
+        </header>
+
+        <section class="mb-12 md:mb-16">
+            <h2 class="text-3xl font-bold text-center text-dark mb-8">O Bootcamp em Números</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-xl p-8 text-center border-b-4 border-primary">
+                    <span class="text-6xl md:text-7xl font-black text-primary block">2</span>
+                    <span class="text-xl font-bold text-dark mt-2 block">Dias Intensivos</span>
+                    <p class="text-dark/80 mt-2">Focados em fundamentos e sinergia prática.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-xl p-8 text-center border-b-4 border-secondary">
+                    <span class="text-6xl md:text-7xl font-black text-secondary block">5+</span>
+                    <span class="text-xl font-bold text-dark mt-2 block">Horas de Conteúdo</span>
+                    <p class="text-dark/80 mt-2">Incluindo 160 minutos de sessões por dia.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-xl p-8 text-center border-b-4 border-accent">
+                    <span class="text-6xl md:text-7xl font-black text-accent block">5</span>
+                    <span class="text-xl font-bold text-dark mt-2 block">Atividades Práticas</span>
+                    <p class="text-dark/80 mt-2">Do "Sem Código" à análise com Pandas e IA.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white rounded-lg shadow-lg p-6 md:p-10 mb-12 md:mb-16">
+            <h2 class="text-3xl font-bold text-center text-dark mb-8">A Sinergia Central: O Fluxo de Trabalho Moderno</h2>
+            <p class="text-lg text-dark/80 text-center max-w-3xl mx-auto mb-10">Este bootcamp foca em fundir duas disciplinas. Em vez de tarefas isoladas, mostramos como usar Python para preparar dados para a IA, e como usar a IA para gerar dados estruturados que o Python possa analisar. É um ciclo completo de insights.</p>
+            <div class="flow-diagram p-4 bg-light rounded-lg">
+                <div class="flow-item" style="border-color: #5F27CD; color: #5F27CD;">Dados Brutos</div>
+                <div class="flow-arrow" style="color: #FF9F43;"></div>
+                <div class="flow-item" style="border-color: #FF9F43; color: #FF9F43;">Pandas (Python)</div>
+                <div class="flow-arrow" style="color: #FFC107;"></div>
+                <div class="flow-item" style="border-color: #FFC107; color: #FFC107;">Prompt de IA</div>
+                <div class="flow-arrow" style="color: #00D2D3;"></div>
+                <div class="flow-item" style="border-color: #00D2D3; color: #00D2D3;">JSON (IA)</div>
+                <div class="flow-arrow" style="color: #5F27CD;"></div>
+                <div class="flow-item" style="border-color: #5F27CD; color: #5F27CD;">Pandas (Insight)</div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 md:mb-16">
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h3 class="text-2xl font-bold text-dark mb-6 text-center">Dia 1: Foco nos Fundamentos</h3>
+                <p class="text-dark/80 mb-6 text-center">O primeiro dia é dedicado a nivelar o conhecimento, garantindo que todos dominam as ferramentas essenciais de cada área separadamente.</p>
+                <div class="chart-container" style="height: 300px;">
+                    <canvas id="day1Chart"></canvas>
+                </div>
+                <p class="text-center text-sm text-dark/70 mt-4">Divisão do tempo de foco no Dia 1.</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h3 class="text-2xl font-bold text-dark mb-6 text-center">Dia 2: Foco na Sinergia</h3>
+                <p class="text-dark/80 mb-6 text-center">O segundo dia foca-se exclusivamente na integração, aplicando os fundamentos em fluxos de trabalho práticos e do mundo real.</p>
+                <div class="chart-container" style="height: 300px;">
+                    <canvas id="day2Chart"></canvas>
+                </div>
+                <p class="text-center text-sm text-dark/70 mt-4">Divisão do tempo de foco no Dia 2.</p>
+            </div>
+        </section>
+
+        <section class="bg-white rounded-lg shadow-lg p-6 md:p-10 mb-12 md:mb-16">
+            <h2 class="text-3xl font-bold text-center text-dark mb-8">Fluxos de Trabalho Chave na Prática</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Fluxo 1: Python PARA IA (Pré-processamento)</h3>
+                    <p class="text-dark/80 mb-6">Não podemos colocar 1 milhão de linhas num prompt. Usamos o Pandas para agregar e resumir dados, criando um contexto pequeno e de alta qualidade para a IA analisar.</p>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-light rounded-lg shadow-inner text-center">
+                            <span class="font-bold text-dark">Dados Brutos (Ex: 1M linhas)</span>
+                        </div>
+                        <div class="text-5xl text-center text-secondary font-black transform rotate-90 md:rotate-0">↓</div>
+                        <div class="p-4 bg-light rounded-lg shadow-inner text-center">
+                            <span class="font-bold text-dark">Agregação com Pandas (Ex: `df.describe()`)</span>
+                        </div>
+                        <div class="text-5xl text-center text-secondary font-black transform rotate-90 md:rotate-0">↓</div>
+                        <div class="p-4 bg-light rounded-lg shadow-inner text-center">
+                            <span class="font-bold text-dark">Prompt Dinâmico (Ex: Sumário de 10 linhas)</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Fluxo 2: IA PARA Python (Pós-processamento)</h3>
+                    <p class="text-dark/80 mb-6">A IA responde em prosa, mas o Python precisa de estrutura. Instruímos a IA a responder em JSON, que podemos carregar diretamente num DataFrame para análise imediata.</p>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-light rounded-lg shadow-inner text-center">
+                            <span class="font-bold text-dark">Texto Não Estruturado (Ex: Reviews)</span>
+                        </div>
+                        <div class="text-5xl text-center text-secondary font-black transform rotate-90 md:rotate-0">↓</div>
+                        <div class="p-4 bg-light rounded-lg shadow-inner text-center">
+                            <span class="font-bold text-dark">Prompt de Extração (com Formato JSON)</span>
+                        </div>
+                        <div class="text-5xl text-center text-secondary font-black transform rotate-90 md:rotate-0">↓</div>
+                        <div class="p-4 bg-light rounded-lg shadow-inner text-center">
+                            <span class="font-bold text-dark">DataFrame (via `pd.DataFrame(json.loads(ia_response))`)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12 md:mb-16">
+            <h2 class="text-3xl font-bold text-center text-dark mb-8">Foco por Módulo (Minutos)</h2>
+            <p class="text-lg text-dark/80 text-center max-w-3xl mx-auto mb-10">O bootcamp equilibra o tempo entre os conceitos fundamentais de Prompt Engineering (PE), a análise de dados clássica com Pandas, e os módulos de sinergia que fundem os dois.</p>
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <div class="chart-container" style="max-width: 900px; height: 400px;">
+                    <canvas id="moduleChart"></canvas>
+                </div>
+                <p class="text-center text-sm text-dark/70 mt-4">Tempo total alocado por tópico principal do módulo, excluindo introduções e intervalos.</p>
+            </div>
+        </section>
+        
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h3 class="text-2xl font-bold text-dark mb-6 text-center">Ferramentas Essenciais</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-center p-4 bg-light rounded-lg">
+                        <span class="text-2xl mr-4">⚙️</span>
+                        <span class="font-bold text-dark">Google Colab:</span>
+                        <span class="text-dark/80 ml-2">Para todas as atividades práticas de Python.</span>
+                    </li>
+                    <li class="flex items-center p-4 bg-light rounded-lg">
+                        <span class="text-2xl mr-4">🐼</span>
+                        <span class="font-bold text-dark">Pandas:</span>
+                        <span class="text-dark/80 ml-2">Para manipulação e agregação de dados.</span>
+                    </li>
+                    <li class="flex items-center p-4 bg-light rounded-lg">
+                        <span class="text-2xl mr-4">🧠</span>
+                        <span class="font-bold text-dark">Interfaces de IA:</span>
+                        <span class="text-dark/80 ml-2">Google AI Studio, OpenAI Playground, etc.</span>
+                    </li>
+                    <li class="flex items-center p-4 bg-light rounded-lg">
+                        <span class="text-2xl mr-4">{}</span>
+                        <span class="font-bold text-dark">JSON:</span>
+                        <span class="text-dark/80 ml-2">A "língua franca" entre a IA e o Python.</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h3 class="text-2xl font-bold text-dark mb-6 text-center">Avisos Importantes</h3>
+                 <ul class="space-y-4">
+                    <li class="flex items-start p-4 bg-red-100 border-l-4 border-red-500 rounded-lg">
+                        <span class="text-2xl mr-4">⚠️</span>
+                        <div>
+                            <span class="font-bold text-red-900">Alucinações:</span>
+                            <p class="text-red-800/90">A IA pode inventar factos. Sempre verifique os resultados críticos.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start p-4 bg-yellow-100 border-l-4 border-yellow-500 rounded-lg">
+                        <span class="text-2xl mr-4">🔒</span>
+                        <div>
+                            <span class="font-bold text-yellow-900">Privacidade:</span>
+                            <p class="text-yellow-800/90">Não envie dados sensíveis ou pessoais para APIs públicas.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start p-4 bg-blue-100 border-l-4 border-blue-500 rounded-lg">
+                        <span class="text-2xl mr-4">💸</span>
+                        <div>
+                            <span class="font-bold text-blue-900">Custo:</span>
+                            <p class="text-blue-800/90">APIs de LLM são pagas por token. O uso em larga escala pode ser caro.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="text-center p-8 mt-12 border-t border-gray-300">
+        <p class="text-dark/70">Infográfico gerado com base no Roteiro do Bootcamp de Prompt Engineering e Data Analytics.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
+                }
+            };
+            
+            const sharedOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: {
+                                size: 14,
+                                family: 'Inter'
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            };
+
+            const processLabels = (labels) => {
+                return labels.map(label => {
+                    if (label.length > 16) {
+                        const words = label.split(' ');
+                        const lines = [];
+                        let currentLine = '';
+                        words.forEach(word => {
+                            if ((currentLine + word).length > 16) {
+                                lines.push(currentLine.trim());
+                                currentLine = word + ' ';
+                            } else {
+                                currentLine += word + ' ';
+                            }
+                        });
+                        lines.push(currentLine.trim());
+                        return lines;
+                    }
+                    return label;
+                });
+            };
+
+            const colors = {
+                primary: '#5F27CD',
+                secondary: '#FF9F43',
+                accent: '#FFC107',
+                info: '#00D2D3'
+            };
+
+            const ctxDay1 = document.getElementById('day1Chart');
+            if (ctxDay1) {
+                new Chart(ctxDay1, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Fundamentos de PE (M2)', 'Fundamentos de Pandas (M3)'],
+                        datasets: [{
+                            label: 'Minutos',
+                            data: [55, 60],
+                            backgroundColor: [colors.primary, colors.secondary],
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: { ...sharedOptions }
+                });
+            }
+
+            const ctxDay2 = document.getElementById('day2Chart');
+            if (ctxDay2) {
+                new Chart(ctxDay2, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Pré-processamento (M4)', 'IA para Código (M5)', 'Pós-processamento (M6)'],
+                        datasets: [{
+                            label: 'Minutos',
+                            data: [45, 45, 45],
+                            backgroundColor: [colors.primary, colors.secondary, colors.accent],
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: { ...sharedOptions }
+                });
+            }
+
+            const ctxModule = document.getElementById('moduleChart');
+            if (ctxModule) {
+                const moduleLabels = ['Fundamentos de Prompt Eng.', 'Análise com Pandas', 'Python para IA (Pré-proc.)', 'IA para Código (Assistente)', 'IA para Python (Pós-proc.)'];
+                new Chart(ctxModule, {
+                    type: 'bar',
+                    data: {
+                        labels: processLabels(moduleLabels),
+                        datasets: [{
+                            label: 'Minutos Alocados',
+                            data: [55, 60, 45, 45, 45],
+                            backgroundColor: [
+                                colors.primary,
+                                colors.secondary,
+                                colors.accent,
+                                colors.info,
+                                colors.primary
+                            ],
+                            borderColor: '#FFFFFF',
+                            borderWidth: 2,
+                            borderRadius: 8
+                        }]
+                    },
+                    options: {
+                        ...sharedOptions,
+                        indexAxis: 'y',
+                        plugins: {
+                            ...sharedOptions.plugins,
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    display: true,
+                                    color: '#E0E0E0'
+                                },
+                                ticks: {
+                                    font: {
+                                        family: 'Inter'
+                                    }
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    font: {
+                                        family: 'Inter',
+                                        size: 14
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
