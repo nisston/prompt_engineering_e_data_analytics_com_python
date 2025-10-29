@@ -12,6 +12,14 @@ Exploramos desde os fundamentos da análise de dados qualitativos com NLTK até 
 
 ## Tópicos Abordados
 
+### Exemplos com o Google Colab
+* [1 - Exemplo Estatistica Descritiva](https://colab.research.google.com/drive/1C_-dv_e3zdWmUnejlkZkbWeX0UXqrmCZ?usp=sharing)
+* [2 - Exemplo Estatistica Inferencial](https://drive.google.com/file/d/1GQ__1ndMYt-uariS3XSEdQkU8bQdfQqc/view?usp=sharing)
+* [3 - Exemplo Análise Exploratória](https://colab.research.google.com/drive/1TBxr3eKln1GueLGZSof-2mqOW-Gv_tas?usp=sharing)
+* [4 - Exemplo Modelagem Regressão](https://drive.google.com/file/d/1An5MSgyMsEQtU4RxYbmWy3UJUCXUbuVg/view?usp=sharing)
+* [5 - Exemplo Dados Qualitativos](https://colab.research.google.com/drive/1nXVQZiwcO9ig8a7jh__pweO4cSWf0QCG?usp=sharing)
+* [6 - Exemplo Trabalhando com a IA](https://colab.research.google.com/drive/1ueu1VhnWnHOQ6W0jA3v4gffidHAYbL2V?usp=sharing)
+
 ### 1. Data Analytics com Python
 * **Fundamentos:** Diferenças entre dados Quantitativos e Qualitativos.
 * **Análise Qualitativa:** Técnicas de processamento de linguagem natural (NLP) para extrair insights de textos (ex: feedbacks de clientes).
